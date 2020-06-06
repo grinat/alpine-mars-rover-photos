@@ -54,6 +54,7 @@ function photosList() {
           ...photo,
           unixTime: +date,
           caption,
+          img_src: photo.img_src.replace('http://', 'https://'),
         }})
     },
     orderData(photos) {
