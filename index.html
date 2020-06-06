@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>alpine-mars-rover-photos</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <meta name="theme-color" content="#fafafa">
+
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js" defer></script>
+</head>
+
+<body>
+
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <div x-data="photosList()" x-init="fetchData(date)" class="photos-list">
+
+    <div class="photos-list__toolbar">
+      <input type="date" x-model="date" x-on:input.debounce="fetchData(date)" />
+    </div>
+
+    <div class="photos-list__info">
+      <div x-show="loading">Loading...</div>
+
+      <div x-show="!loading && photos.length === 0">No items found... Please try other date</div>
+
+      <div x-html="`Total: ${photos.length}`" />
+    </div>
+
+    <div class="photos-list__rows">
+      <template x-for="photo in photos" :key="photo.id">
+        <div class="photo">
+          <label x-html="photo.caption" class="photo__label"></label>
+          <picture class="photo__image">
+            <img x-bind:src="photo.img_src" x-bind:alt="photo.caption" />
+          </picture>
+        </div>
+      </template>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

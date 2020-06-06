@@ -1,0 +1,23 @@
+.photos-list__toolbar {
+  padding: 10px 15px;
+}
+.photos-list__info {
+  padding: 5px 15px;
+}
+.photos-list__rows {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 -15px;
+}
+
+.photo {
+  display: grid;
+  padding: 15px;
+}
+.photo__image img {
+  width: 100%;
+  height: auto;
+}
+.photo__label {
+  font-weight: bold;
+}
